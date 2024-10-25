@@ -140,6 +140,12 @@ export const MissionVisionValues = styled.div`
     width: 100%;
     max-width: 1200px;
     margin-top: 1rem;
+
+    /* Configuração para mobile */
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   .value-box {
@@ -151,8 +157,13 @@ export const MissionVisionValues = styled.div`
     margin: 0 1rem;
     text-align: center;
     max-width: 300px;
-    position: relative; 
- 
+    position: relative;
+
+    p {
+      font-size: 0.9rem; /* Fonte menor para textos mais longos */
+      line-height: 1.4; /* Maior espaçamento */
+    }
+
     &:nth-child(1) {
       border-top: 8px solid #ffbf01; 
     }
@@ -163,6 +174,12 @@ export const MissionVisionValues = styled.div`
 
     &:nth-child(3) {
       border-top: 8px solid #ffbf01; 
+    }
+
+    /* Ajustes no mobile */
+    @media (max-width: 768px) {
+      max-width: 90%; /* Largura máxima */
+      margin: 1rem 0;
     }
   }
 `;
@@ -186,6 +203,12 @@ export const ServicesSection = styled.div`
     width: 100%;
     max-width: 1200px;
     margin-top: 1rem;
+
+    /* Configuração para mobile */
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 
   .service-box {
@@ -207,7 +230,7 @@ export const ServicesSection = styled.div`
     }
 
     p {
-      font-size: 1rem;
+      font-size: 0.9rem;
       line-height: 1.5;
     }
 
@@ -215,6 +238,12 @@ export const ServicesSection = styled.div`
       color: #ffbf01;
       font-size: 2.5rem;
       margin-bottom: 1rem;
+    }
+
+    /* Ajustes no mobile */
+    @media (max-width: 768px) {
+      max-width: 90%;
+      margin: 1rem 0;
     }
   }
 `;
