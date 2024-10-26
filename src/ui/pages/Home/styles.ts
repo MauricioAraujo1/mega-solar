@@ -18,22 +18,17 @@ export const WhatsAppButton = styled.a`
 `;
 
 export const StyledButton = styled.button`
-  background-color: transparent; 
-  color: white; 
-  border: 2px solid #ffbf01; 
+  background-color: #ffbf01; 
+  color: #000; 
+  border: 2px #ffbf01; 
   border-radius: 30px; 
   padding: 0.75rem 2rem; 
   margin-top: 20px;
   font-size: 1.2rem; 
   font-weight: bold;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); 
+ 
   cursor: pointer; 
   transition: background-color 0.3s ease, color 0.3s ease; 
-
-  &:hover {
-    background-color: #ffbf01; 
-    color: #fff; 
-  }
 
   &:focus {
     outline: none; 

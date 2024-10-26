@@ -20,23 +20,11 @@ export function Home() {
         <Header />
         <HeroSection>
           <HeroText>
-            <h1>A Marca Líder em Energia Solar</h1>
+            <h1>Transformando Manaus com energia solar</h1>
             <p>Simule seu gerador de Energia Solar agora mesmo!</p>
             <StyledButton onClick={scrollToForm}>Faça uma simulação</StyledButton> 
           </HeroText>
         </HeroSection>
-        <VideoSection>
-          <video 
-            src="/mega-solar-video.mp4" 
-            autoPlay 
-            loop 
-            muted  
-            style={{ width: '100%', height: 'auto' }} 
-          >
-            Seu navegador não suporta a tag de vídeo.
-          </video>
-        </VideoSection>
-
               {/* Seção "Sobre nós" */}
       <AboutSection id="about">
         <AboutText>
@@ -44,8 +32,7 @@ export function Home() {
           <br />
           <br />
           <p>
-          A Estação Mega Solar é especialista em desenvolver projetos de micro e minigeração de energia com sistemas fotovoltaicos, convertendo a luz solar em energia elétrica. Atuamos nos segmentos residencial, comercial, industrial e agrícola, oferecendo soluções integradas com os melhores fabricantes do mercado e garantindo um dimensionamento preciso para cada instalação.
-          Utilizamos produtos de fabricantes europeus, americanos e chineses, todos certificados pelo INMETRO e reconhecidos por sua alta qualidade. Nosso compromisso vai desde o planejamento inicial até a interligação do sistema com a concessionária local, garantindo eficiência e segurança em todas as etapas do projeto.
+            A Estação Mega Solar é especialista em projetos de micro e minigeração de energia fotovoltaica, convertendo luz solar em energia elétrica. Atuamos nos segmentos residencial, comercial, industrial e agrícola, oferecendo soluções integradas com os melhores fabricantes do mercado.
           </p>
                 {/* Ícones de redes sociais */}
           <div style={{ display: 'flex', marginTop: '1rem' }}>
@@ -86,7 +73,17 @@ export function Home() {
           </div>
         </div>
       </MissionVisionValues>
-
+      <VideoSection>
+          <video 
+            src="/mega-solar-video.mp4" 
+            autoPlay 
+            loop 
+            muted  
+            style={{ width: '100%', height: 'auto' }} 
+          >
+            Seu navegador não suporta a tag de vídeo.
+          </video>
+        </VideoSection>
             {/* Nova Seção: Nossos Serviços */}
       <ServicesSection id="services">
         <h2>Nossos Serviços</h2>
