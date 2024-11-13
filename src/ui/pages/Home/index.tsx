@@ -1,13 +1,23 @@
 import { useRef } from "react";
 import { Header } from "../../components/Header";
 import { Form } from "../../components/Form";
-import { HeroSection, HeroText, VideoSection, AboutSection, AboutText, AboutImage, MissionVisionValues, ServicesSection, ContactSection, FooterSection, StyledButton, WhatsAppButton } from "./styles";
+import {
+  HeroSection, HeroText, VideoSection, AboutSection, AboutText,
+  AboutImage, MissionVisionValues, ServicesSection, ContactSection,
+  FooterSection, StyledButton, WhatsAppButton
+} from "./styles";
 
-import Logo from '../../../assets/images/logo_black.png'
-import { FaInstagram, FaWhatsapp, FaCheckCircle, FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa'
+import Logo from '../../../assets/images/logo_black.png';
+import { FaInstagram, FaWhatsapp, FaCheckCircle, FaMapMarkerAlt, FaEnvelope, FaPhoneAlt } from 'react-icons/fa';
+
+declare global {
+  interface Window {
+    fbq?: (...args: [string, string, Record<string, string>]) => void;
+  }
+}
 
 export function Home() {
-  const formRef =  useRef<HTMLDivElement | null>(null); 
+  const formRef = useRef<HTMLDivElement | null>(null);
 
   const scrollToForm = () => {
     if (formRef.current) {
@@ -15,31 +25,51 @@ export function Home() {
     }
   };
 
-    return (
-      <>
-        <Header />
-        <HeroSection>
-          <HeroText>
-            <h1>Transformando Manaus com energia solar</h1>
-            <p>Simule seu gerador de Energia Solar agora mesmo!</p>
-            <StyledButton onClick={scrollToForm}>Faça uma simulação</StyledButton> 
-          </HeroText>
-        </HeroSection>
-              {/* Seção "Sobre nós" */}
+  const handleSocialMediaClick = (platform: string) => {
+    if (window.fbq) {
+      window.fbq('track', 'SocialMediaClick', {
+        platform: platform,
+        url: platform === 'Instagram'
+          ? "https://www.instagram.com/estacaomega.energiasolar/?igsh=MWI1NmZjY2s2eDZhZw%3D%3D"
+          : "https://wa.me/5592981488012",
+      });
+    }
+  };
+
+  return (
+    <>
+      <Header />
+      <HeroSection>
+        <HeroText>
+          <h1>Transformando Manaus com energia solar</h1>
+          <p>Simule seu gerador de Energia Solar agora mesmo!</p>
+          <StyledButton onClick={scrollToForm}>Faça uma simulação</StyledButton>
+        </HeroText>
+      </HeroSection>
+
       <AboutSection id="about">
         <AboutText>
           <h2>Sobre nós</h2>
-          <br />
-          <br />
           <p>
             A Estação Mega Solar é especialista em projetos de micro e minigeração de energia fotovoltaica, convertendo luz solar em energia elétrica. Atuamos nos segmentos residencial, comercial, industrial e agrícola, oferecendo soluções integradas com os melhores fabricantes do mercado.
           </p>
-                {/* Ícones de redes sociais */}
           <div style={{ display: 'flex', marginTop: '1rem' }}>
-            <a href="https://www.instagram.com/estacaomega.energiasolar/?igsh=MWI1NmZjY2s2eDZhZw%3D%3D" target="_blank" rel="noopener noreferrer" style={{ margin: '0 1rem' }}>
+            <a
+              href="https://www.instagram.com/estacaomega.energiasolar/?igsh=MWI1NmZjY2s2eDZhZw%3D%3D"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ margin: '0 1rem' }}
+              onClick={() => handleSocialMediaClick('Instagram')}
+            >
               <FaInstagram size={30} color="#C13584" />
             </a>
-            <a href="https://wa.me/5592981488012" target="_blank" rel="noopener noreferrer" style={{ margin: '0 1rem' }}>
+            <a
+              href="https://wa.me/5592981488012"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ margin: '0 1rem' }}
+              onClick={() => handleSocialMediaClick('WhatsApp')}
+            >
               <FaWhatsapp size={30} color="#25D366" />
             </a>
           </div>
@@ -47,7 +77,6 @@ export function Home() {
         <AboutImage src="/background-hero-2.jpeg" alt="Imagem representativa da empresa" />
       </AboutSection>
 
-            {/* Seção de Missão, Visão e Valores */}
       <MissionVisionValues>
         <div className="values-container">
           <div className="value-box">
@@ -73,18 +102,19 @@ export function Home() {
           </div>
         </div>
       </MissionVisionValues>
+
       <VideoSection>
-          <video 
-            src="/mega-solar-video.mp4" 
-            autoPlay 
-            loop 
-            muted  
-            style={{ width: '100%', height: 'auto' }} 
-          >
-            Seu navegador não suporta a tag de vídeo.
-          </video>
-        </VideoSection>
-            {/* Nova Seção: Nossos Serviços */}
+        <video 
+          src="/mega-solar-video.mp4" 
+          autoPlay 
+          loop 
+          muted  
+          style={{ width: '100%', height: 'auto' }} 
+        >
+          Seu navegador não suporta a tag de vídeo.
+        </video>
+      </VideoSection>
+
       <ServicesSection id="services">
         <h2>Nossos Serviços</h2>
         <div className="services-container">
@@ -115,7 +145,6 @@ export function Home() {
         </div>
       </ServicesSection>
 
-      {/* Seção Entre em Contato */}
       <ContactSection id="contact">
         <h2>Entre em contato</h2>
         <div className="contact-container">
@@ -151,11 +180,10 @@ export function Home() {
           <p>Copyright © Energia Mega Solar 2024 | Todos os direitos reservados.</p>
         </FooterSection>
       </div>
-            {/* Botão flutuante do WhatsApp */}
-            <WhatsAppButton href="https://wa.me/5592981488012" target="_blank" aria-label="Contato WhatsApp">
+
+      <WhatsAppButton href="https://wa.me/5592981488012" target="_blank" aria-label="Contato WhatsApp">
         <FaWhatsapp />
       </WhatsAppButton>
-      </>
-    );
-  };
-  
+    </>
+  );
+}
